@@ -23,7 +23,7 @@ public class MainApp {
         for (User user : users) {
             System.out.println(user.toString());
         }
-        System.out.println(userService.getUserByCarModelSeries("diau", 3));
+        System.out.println(userService.getUserByCarModelSeries("model4", 123));
         context.close();
     }
 }

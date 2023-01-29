@@ -37,10 +37,16 @@ public class UserDaoImp implements UserDao {
     @Override
     @Transactional
     public User getUserByCarModelSeries(String model, int series) {
-        return sessionFactory.getCurrentSession().createQuery(SELECT_FROM_USER_BY_CAR, User.class)
-                .setParameter("model", model)
-                .setParameter("series", series)
-                .getSingleResult();
+        User user = null;
+        try {
+            user = sessionFactory.getCurrentSession().createQuery(SELECT_FROM_USER_BY_CAR, User.class)
+                    .setParameter("model", model)
+                    .setParameter("series", series)
+                    .getSingleResult();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return user;
     }
 
 
